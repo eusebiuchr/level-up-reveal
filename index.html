@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEVEL UP – Reveal</title>
+
+<style>
+body {
+    margin: 0;
+    background-color: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    max-width: 400px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #aaa;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-top: 20px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #39FF14;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.fade {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+    <h1>CALCULATE YOUR REALITY</h1>
+    <p>Enter your XP score.<br>No lies. No excuses.</p>
+    <input type="number" id="xp" min="0" max="30">
+    <br>
+    <button onclick="reveal()">REVEAL MY IDENTITY</button>
+</div>
+
+<script>
+function reveal() {
+    let xp = parseInt(document.getElementById("xp").value);
+    let result = "";
+
+    if (isNaN(xp) || xp < 0 || xp > 30) {
+        alert("Enter a number between 0 and 30.");
+        return;
+    }
+
+    document.body.style.backgroundColor = "#0f0f0f";
+
+    if (xp <= 10) {
+        document.body.style.backgroundColor = "#1a0000";
+        result = "<h1>NPC MODE</h1><p>You reacted.<br>Not decided.<br><br>Nothing terrible will happen.<br>But nothing extraordinary ever will.</p>";
+    } 
+    else if (xp <= 18) {
+        document.body.style.backgroundColor = "#1a1400";
+        result = "<h1>AVERAGE MODE</h1><p>You tried.<br>Sometimes.<br><br>Potential exists.<br>But you stopped halfway.</p>";
+    } 
+    else if (xp <= 25) {
+        document.body.style.backgroundColor = "#001a00";
+        result = "<h1>SIGMA MODE</h1><p>You resisted impulses.<br>You acted when motivation was gone.<br><br>Discipline compounds.</p>";
+    } 
+    else {
+        document.body.style.backgroundColor = "#00121a";
+        result = "<h1>ELITE LEVEL</h1><p>You don’t negotiate with excuses.<br><br>You execute.<br><br>You are inevitable.</p>";
+    }
+
+    document.getElementById("main").innerHTML = "<div class='fade'>" + result + "</div>";
+}
+</script>
+
+</body>
+</html>
